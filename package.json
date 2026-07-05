@@ -1,0 +1,35 @@
+{
+  "name": "event-booking-api",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/bun": "latest",
+    "@types/express": "^5.0.6",
+    "@types/pg": "^8.20.0",
+    "drizzle-kit": "^0.31.10",
+    "eslint": "^10.6.0",
+    "husky": "^9.1.7",
+    "prettier": "^3.9.4",
+    "typescript-eslint": "^8.62.1"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "drizzle-orm": "^0.45.2",
+    "express": "^5.2.1",
+    "lint-staged": "^17.0.8",
+    "pg": "^8.22.0",
+    "zod": "^4.4.3"
+  },
+  "scripts": {
+    "prepare": "husky",
+    "dev": "bun --watch /src/index.ts",
+    "format": "prettier --write",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:studio": "drizzle-kit studio"
+  }
+}
