@@ -12,9 +12,7 @@ export const usersTable = pgTable('users', {
   name: varchar('name').notNull(),
   email: varchar('email', { length: 60 }).notNull().unique(),
   password: text('password').notNull(),
-  roleId: uuid('role_id')
-    .notNull()
-    .references(() => rolesTable.id),
+
   createdAt: timestamp('created_at').defaultNow().notNull(),
 });
 
