@@ -1,10 +1,4 @@
-import {
-  pgTable,
-  text,
-  timestamp,
-  uuid,
-  varchar,
-} from 'drizzle-orm/pg-core';
+import { pgTable, text, timestamp, uuid, varchar } from 'drizzle-orm/pg-core';
 import { rolesTable } from './roles';
 
 export const usersTable = pgTable('users', {
@@ -12,7 +6,9 @@ export const usersTable = pgTable('users', {
   name: varchar('name').notNull(),
   email: varchar('email', { length: 60 }).notNull().unique(),
   password: text('password').notNull(),
-
+  roleId: uuid('role_id')
+    .references(() => rolesTable.id, { onDelete: 'cascade' })
+    .notNull(),
   createdAt: timestamp('created_at').defaultNow().notNull(),
 });
 
