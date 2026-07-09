@@ -65,7 +65,7 @@ export class ConflictError extends AppError {
 }
 
 /** 500 Internal server error - Something went wrong on server side */
-export class InternalError extends AppError {
+export class InternalServerError extends AppError {
   constructor(message: string = 'Internal server error') {
     super(message, 500, 'INTERNAL_ERROR');
   }

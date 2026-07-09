@@ -23,6 +23,7 @@ export function errorHandler(
       name: err.name,
       url: req.url,
       method: req.method,
+      cause: err.cause
     });
   }
 
