@@ -8,7 +8,7 @@ import {
 import { usersTable } from './users';
 import { sql } from 'drizzle-orm';
 
-const organizerRequestsStatusEnum = pgEnum('organizer_request_status', [
+export const organizerRequestsStatusEnum = pgEnum('organizer_request_status', [
   'pending',
   'approved',
   'rejected',
