@@ -11,10 +11,10 @@ export function validate(validators: RequestValidators) {
   return (req: Request, res: Response, next: NextFunction) => {
     try {
       if (validators.body) {
-        validators.body.parse(req.body);
+        req.body = validators.body.parse(req.body);
       }
       if (validators.params) {
-        validators.params.parse(req.params);
+        req.params = validators.params.parse(req.params) as typeof req.params;
       }
       next();
     } catch (error) {
