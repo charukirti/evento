@@ -17,10 +17,12 @@ export function generateAccessToken({
   role,
   permissions,
 }: AccessTokenBody) {
+  const jti = randomUUIDv7();
   const payload = {
     sub: userId,
     role,
     permissions,
+    jti,
   };
 
   const token = sign(payload, env.JWT_ACCESS_SECRET, {
