@@ -6,6 +6,7 @@ import {
   notFoundHandler,
 } from './middleware/error-handler.middleware';
 import authRouter from './modules/auth/auth.routes';
+import usersRoutes from './modules/users/users.routes';
 
 const app = express();
 const PORT = env.PORT;
@@ -19,6 +20,7 @@ app.get('/health', (req, res) => {
 });
 
 app.use('/api/auth', authRouter);
+app.use('/api/users', usersRoutes);
 
 app.use(notFoundHandler);
 app.use(errorHandler);
