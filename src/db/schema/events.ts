@@ -9,8 +9,8 @@ import {
   pgEnum,
   check,
 } from 'drizzle-orm/pg-core';
-import { usersTable } from './users';
 import { sql } from 'drizzle-orm';
+import { organizersTable } from './organizer';
 
 export const eventCategoryEnum = pgEnum('event_category', [
   'music',
@@ -42,7 +42,7 @@ export const eventsTable = pgTable(
     availableSeats: integer('available_seats').notNull(),
     posterUrl: varchar('poster_url'),
     organizerId: uuid('organizer_id')
-      .references(() => usersTable.id, { onDelete: 'cascade' })
+      .references(() => organizersTable.userId, { onDelete: 'restrict' })
       .notNull(),
     price: numeric('price', { precision: 10, scale: 2 }).notNull().default('0'),
     createdAt: timestamp('created_at').defaultNow().notNull(),

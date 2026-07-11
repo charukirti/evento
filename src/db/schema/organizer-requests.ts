@@ -4,6 +4,8 @@ import {
   timestamp,
   pgEnum,
   uniqueIndex,
+  varchar,
+  text,
 } from 'drizzle-orm/pg-core';
 import { usersTable } from './users';
 import { sql } from 'drizzle-orm';
@@ -22,6 +24,9 @@ export const organizerRequestsTable = pgTable(
       .references(() => usersTable.id, { onDelete: 'cascade' })
       .notNull(),
     status: organizerRequestsStatusEnum('status').default('pending').notNull(),
+    organizationName: varchar('organization_name', { length: 60 }),
+    bio: text('bio'),
+    website: varchar('website'),
     requestedAt: timestamp('requested_at').defaultNow().notNull(),
     reviewedBy: uuid('reviewed_by').references(() => usersTable.id, {
       onDelete: 'set null',
